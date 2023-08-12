@@ -1,21 +1,18 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/counter_bloc.dart';
 import '../blocs/counter_state.dart';
-import '../models/nominal_model.dart';
 import '../utils/custom_styles.dart';
 import '../utils/formatter.dart';
 
 class ResultScreen extends StatelessWidget {
-  final NominalModel? nominalModel;
 
-  const ResultScreen({Key? key, this.nominalModel}) : super(key: key);
+  const ResultScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    CounterBloc counterTaxBlocProvider =
-        BlocProvider.of<CounterBloc>(context, listen: true);
 
     void onBack() {
       Navigator.pop(context);
@@ -33,7 +30,7 @@ class ResultScreen extends StatelessWidget {
               backgroundColor: primaryColor,
               shape: RoundedRectangleBorder(
                 side: BorderSide(width: 1, color: primaryColor),
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
             child: Text(
@@ -50,8 +47,7 @@ class ResultScreen extends StatelessWidget {
         Widget body(double nominal, double dpp, double ppn, double pph,
             double ppnAndpph, double transfer) {
           return Container(
-            padding: EdgeInsets.all(maxHeight(context) * 0.05),
-            margin: const EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(maxHeight(context) * 0.03),
             decoration: BoxDecoration(
               border: Border.all(
                 color: primaryColor,
@@ -59,6 +55,7 @@ class ResultScreen extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 //Nominal
                 Row(
@@ -179,25 +176,14 @@ class ResultScreen extends StatelessWidget {
         return BlocBuilder<CounterBloc, CounterState>(
           builder: (context, state) {
             if (state is CounterSuccess) {
-              if (state.nominalModel != null) {
-                return body(
-                  state.nominalModel!.nominal!.toDouble(),
-                  state.nominalModel!.dpp!.toDouble(),
-                  state.nominalModel!.ppn!.toDouble(),
-                  state.nominalModel!.pph!.toDouble(),
-                  state.nominalModel!.ppnAndpph!.toDouble(),
-                  state.nominalModel!.transfer!.toDouble(),
-                );
-              }else {
-                return body(
-                  state.ppnModel!.nominal!.toDouble(),
-                  state.ppnModel!.dpp!.toDouble(),
-                  state.ppnModel!.ppn!.toDouble(),
-                  state.ppnModel!.pph!.toDouble(),
-                  state.ppnModel!.ppnAndpph!.toDouble(),
-                  state.ppnModel!.transfer!.toDouble(),
-                );
-              }
+              return body(
+                state.calculateModel!.nominal!.toDouble(),
+                state.calculateModel!.dpp!.toDouble(),
+                state.calculateModel!.ppn!.toDouble(),
+                state.calculateModel!.pph!.toDouble(),
+                state.calculateModel!.ppnAndpph!.toDouble(),
+                state.calculateModel!.transfer!.toDouble(),
+              );
             }
             return Container(
               margin: const EdgeInsets.all(15.0),
@@ -215,7 +201,6 @@ class ResultScreen extends StatelessWidget {
       return Center(
         child: Container(
           margin: const EdgeInsets.all(15.0),
-          padding: EdgeInsets.all(maxHeight(context) * 0.05),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

@@ -13,7 +13,7 @@ class Formatter {
 
   static String formatCurrencyRupiah(double number) {
     const _locale = 'en';
-    String _formatNumber() => NumberFormat.decimalPattern(_locale).format(number.round());
+    String _formatNumber() => NumberFormat.decimalPattern(_locale).format(number.toInt());
     return _formatNumber();
   }
 

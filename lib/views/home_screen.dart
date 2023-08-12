@@ -37,7 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       if(_choice == dataInput[1]){
-        counterTaxBlocProvider.onUsingPpnValue(double.parse(_inputNumberController.text.replaceAll(",", "")));
+        counterTaxBlocProvider.onUsingPpnValue(convertToNumber);
+        if(counterTaxBlocProvider.state is CounterSuccess){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen()));
+        }
+      }
+
+      if(_choice == dataInput[2]){
+        counterTaxBlocProvider.onUsingTransferValue(convertToNumber);
         if(counterTaxBlocProvider.state is CounterSuccess){
           Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen()));
         }
@@ -142,6 +149,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       child: Text("Rp"),
                     ),
+                    suffixIcon: IconButton(
+                      onPressed: _inputNumberController.clear,
+                      icon: Icon(Icons.clear),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
                         defaultRadius,
@@ -186,16 +197,18 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       return Center(
-        child: Container(
-          margin: const EdgeInsets.all(15.0),
-          padding: EdgeInsets.all(maxHeight(context) * 0.05),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              dropDownChoice(),
-              formInput(),
-              submitButton(),
-            ],
+        child: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.all(15.0),
+            padding: EdgeInsets.all(maxHeight(context) * 0.05),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                dropDownChoice(),
+                formInput(),
+                submitButton(),
+              ],
+            ),
           ),
         ),
       );
