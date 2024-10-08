@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [BlocProvider(create: (context) => CounterBloc())],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Aplikasi Pajak',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,

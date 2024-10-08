@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text(
               "Masukkan :",
-              style: blackTextStyle.copyWith(
+              style: Typo.body.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -104,13 +104,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
       Widget formInput() {
         return Container(
-          margin: EdgeInsets.only(top: maxHeight(context) * 0.15),
+          margin: EdgeInsets.only(top: SizeScreen.maxHeight(context) * 0.15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "Masukkan $_choice",
-                style: blackTextStyle.copyWith(fontWeight: FontWeight.w400),
+                style: Typo.body.copyWith(fontWeight: FontWeight.w400),
               ),
               const SizedBox(
                 height: 16,
@@ -118,10 +118,10 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(defaultRadius),
+                  borderRadius: BorderRadius.circular(24),
                 ),
                 child: TextFormField(
-                  cursorColor: blackColor,
+                  cursorColor: Colors.black,
                   autofocus: true,
                   controller: _inputNumberController,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   decoration: InputDecoration(
                     hintText: "Masukkan $_choice",
-                    focusColor: primaryColor,
+                    focusColor: Colors.grey,
                     prefixIcon: Container(
                       margin: const EdgeInsets.symmetric(
                         vertical: 10,
@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(
-                        defaultRadius,
+                        24,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -174,22 +174,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
       Widget submitButton() {
         return Container(
-          margin: EdgeInsets.only(top: maxHeight(context) * 0.15),
+          margin: EdgeInsets.only(top: SizeScreen.maxHeight(context) * 0.15),
           width: double.infinity,
           height: 46,
           child: TextButton(
             onPressed: onCalculate,
             style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
+              backgroundColor: Colors.blue,
               shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: primaryColor),
+                side: BorderSide(width: 1, color: Colors.black12),
                 borderRadius: BorderRadius.circular(16),
               ),
             ),
             child: Text(
               "Hitung",
-              style: whiteTextStyle.copyWith(
-                fontWeight: bold,
+              style: Typo.body.copyWith(
+                fontWeight: Typo.bold,
+                color: Colors.white
               ),
             ),
           ),
@@ -200,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           child: Container(
             margin: const EdgeInsets.all(15.0),
-            padding: EdgeInsets.all(maxHeight(context) * 0.05),
+            padding: EdgeInsets.all(SizeScreen.maxHeight(context) * 0.05),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

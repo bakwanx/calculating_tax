@@ -21,22 +21,23 @@ class ResultScreen extends StatelessWidget {
     Widget body() {
       Widget submitButton() {
         return Container(
-          margin: EdgeInsets.only(top: maxHeight(context) * 0.15),
+          margin: EdgeInsets.only(top: SizeScreen.maxHeight(context) * 0.15),
           width: double.infinity,
           height: 46,
           child: TextButton(
             onPressed: onBack,
             style: TextButton.styleFrom(
-              backgroundColor: primaryColor,
+              backgroundColor: Colors.blue,
               shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: primaryColor),
+                side: BorderSide(width: 1, color: Colors.black12),
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
             child: Text(
               "Hitung Ulang",
-              style: whiteTextStyle.copyWith(
-                fontWeight: bold,
+              style: Typo.body.copyWith(
+                fontWeight: Typo.bold,
+                color: Colors.white,
               ),
             ),
           ),
@@ -47,10 +48,10 @@ class ResultScreen extends StatelessWidget {
         Widget body(double nominal, double dpp, double ppn, double pph,
             double ppnAndpph, double transfer) {
           return Container(
-            padding: EdgeInsets.all(maxHeight(context) * 0.03),
+            padding: EdgeInsets.all(SizeScreen.maxHeight(context) * 0.03),
             decoration: BoxDecoration(
               border: Border.all(
-                color: primaryColor,
+                color: Colors.blue,
               ),
               borderRadius: BorderRadius.circular(8),
             ),
@@ -62,11 +63,11 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Nominal : ",
-                      style: blackTextStyle.copyWith(fontSize: 16),
+                      style: Typo.body.copyWith(fontSize: 16),
                     ),
                     Text(
                       "${Formatter.formatCurrencyRupiah(nominal)}",
-                      style: blackTextStyle.copyWith(
+                      style: Typo.body.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -81,11 +82,11 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Text(
                       "DPP : ",
-                      style: blackTextStyle.copyWith(fontSize: 16),
+                      style: Typo.body.copyWith(fontSize: 16),
                     ),
                     Text(
                       "${Formatter.formatCurrencyRupiah(dpp)}",
-                      style: blackTextStyle.copyWith(
+                      style: Typo.body.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -100,11 +101,11 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Text(
                       "PPN : ",
-                      style: blackTextStyle.copyWith(fontSize: 16),
+                      style: Typo.body.copyWith(fontSize: 16),
                     ),
                     Text(
                       "${Formatter.formatCurrencyRupiah(ppn)}",
-                      style: blackTextStyle.copyWith(
+                      style: Typo.body.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -119,11 +120,11 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Text(
                       "PPH : ",
-                      style: blackTextStyle.copyWith(fontSize: 16),
+                      style: Typo.body.copyWith(fontSize: 16),
                     ),
                     Text(
                       "${Formatter.formatCurrencyRupiah(pph)}",
-                      style: blackTextStyle.copyWith(
+                      style: Typo.body.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -138,11 +139,11 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Text(
                       "PPN + PPH : ",
-                      style: blackTextStyle.copyWith(fontSize: 16),
+                      style: Typo.body.copyWith(fontSize: 16),
                     ),
                     Text(
                       "${Formatter.formatCurrencyRupiah(ppnAndpph)}",
-                      style: blackTextStyle.copyWith(
+                      style: Typo.body.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -157,11 +158,11 @@ class ResultScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Transfer : ",
-                      style: blackTextStyle.copyWith(fontSize: 16),
+                      style: Typo.body.copyWith(fontSize: 16),
                     ),
                     Text(
                       "${Formatter.formatCurrencyRupiah(transfer)}",
-                      style: blackTextStyle.copyWith(
+                      style: Typo.body.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -189,7 +190,7 @@ class ResultScreen extends StatelessWidget {
               margin: const EdgeInsets.all(15.0),
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: primaryColor,
+                  color: Colors.blue,
                 ),
                 borderRadius: BorderRadius.circular(10),
               ),
