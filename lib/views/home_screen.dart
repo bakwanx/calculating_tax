@@ -31,25 +31,19 @@ class _HomeScreenState extends State<HomeScreen> {
       final convertToNumber = double.parse(_inputNumberController.text.toString().replaceAll(",", ""));
       if (_choice == dataInput[0]) {
         counterTaxBlocProvider.onUsingNominalValue(convertToNumber);
-        if (counterTaxBlocProvider.state is CounterSuccess) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen()));
-        }
       }
 
       if(_choice == dataInput[1]){
         counterTaxBlocProvider.onUsingPpnValue(convertToNumber);
-        if(counterTaxBlocProvider.state is CounterSuccess){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen()));
-        }
       }
 
       if(_choice == dataInput[2]){
         counterTaxBlocProvider.onUsingTransferValue(convertToNumber);
-        if(counterTaxBlocProvider.state is CounterSuccess){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen()));
-        }
       }
 
+      if (counterTaxBlocProvider.state is CounterSuccess) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ResultScreen()));
+      }
 
     }
 
